@@ -1,0 +1,103 @@
+RR1:
+  hostname: RR1
+  role: RR
+  node_id: 1
+  mgmt_ip: 10.10.20.1
+  loopback: 10.255.255.1
+  net: 49.0001.0102.5525.5001.00
+
+RR2:
+  hostname: RR2
+  role: RR
+  node_id: 2
+  mgmt_ip: 10.10.20.2
+  loopback: 10.255.255.2
+  net: 49.0001.0102.5525.5002.00
+
+P3:
+  hostname: P3
+  role: P
+  node_id: 3
+  mgmt_ip: 10.10.20.3
+  loopback: 10.255.255.3
+  net: 49.0001.0102.5525.5003.00
+
+P4:
+  hostname: P4
+  role: P
+  node_id: 4
+  mgmt_ip: 10.10.20.4
+  loopback: 10.255.255.4
+  net: 49.0001.0102.5525.5004.00
+
+P5:
+  hostname: P5
+  role: P
+  node_id: 5
+  mgmt_ip: 10.10.20.5
+  loopback: 10.255.255.5
+  net: 49.0001.0102.5525.5005.00
+
+P6:
+  hostname: P6
+  role: P
+  node_id: 6
+  mgmt_ip: 10.10.20.6
+  loopback: 10.255.255.6
+  net: 49.0001.0102.5525.5006.00
+
+P7:
+  hostname: P7
+  role: P
+  node_id: 7
+  mgmt_ip: 10.10.20.7
+  loopback: 10.255.255.7
+  net: 49.0001.0102.5525.5007.00
+
+PE11:
+  hostname: PE11
+  role: PE
+  node_id: 11
+  mgmt_ip: 10.10.20.11
+  loopback: 10.255.255.11
+  net: 49.0001.0102.5525.5011.00
+
+PE12:
+  hostname: PE12
+  role: PE
+  node_id: 12
+  mgmt_ip: 10.10.20.12
+  loopback: 10.255.255.12
+  net: 49.0001.0102.5525.5012.00
+
+PE13:
+  hostname: PE13
+  role: PE
+  node_id: 13
+  mgmt_ip: 10.10.20.13
+  loopback: 10.255.255.13
+  net: 49.0001.0102.5525.5013.00
+
+PE14:
+  hostname: PE14
+  role: PE
+  node_id: 14
+  mgmt_ip: 10.10.20.14
+  loopback: 10.255.255.14
+  net: 49.0001.0102.5525.5014.00
+
+PE15:
+  hostname: PE15
+  role: PE
+  node_id: 15
+  mgmt_ip: 10.10.20.15
+  loopback: 10.255.255.15
+  net: 49.0001.0102.5525.5015.00
+
+PE16:
+  hostname: PE16
+  role: PE
+  node_id: 16
+  mgmt_ip: 10.10.20.16
+  loopback: 10.255.255.16
+  net: 49.0001.0102.5525.5016.00

@@ -1,0 +1,5 @@
+platform: ios
+os: iosxe
+access_interfaces: GigabitEthernet1-10
+save_config: true
+mgmt_mask: 255.255.255.0
