@@ -132,6 +132,20 @@ class Inventory:
             if device.get("role") == role
         }
 
+    def get_neighbors(self, hostname: str) -> Dict[str, Any]:
+        """
+        Return all neighbors for a given device.
+
+        Example:
+            get_neighbors("RR1")
+        """
+        try:
+            return self.links[hostname]
+        except KeyError as exc:
+            raise InventoryError(
+                f"No link information found for '{hostname}'."
+            ) from exc
+
     @property
     def device_count(self) -> int:
         """

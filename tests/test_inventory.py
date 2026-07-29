@@ -1,4 +1,5 @@
 from automation.common.inventory import Inventory
+from automation.common.exceptions import InventoryError
 
 
 def main():
@@ -55,7 +56,18 @@ def main():
     print("\nPE Devices")
     print("----------------------------------------")
     print(inventory.get_devices_by_role("PE").keys())
+    
+    print("\nRR1 Neighbors")
+    print("----------------------------------------")
+    print(inventory.get_neighbors("RR1"))
 
+    print("\nMissing Neighbor Information")
+    print("----------------------------------------")
+
+    try:
+        inventory.get_neighbors("RR100")
+    except InventoryError as exc:
+        print(exc)
 
     # Negative test: missing device
     print("\nMissing Device")
