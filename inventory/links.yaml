@@ -1,0 +1,170 @@
+RR1:
+  GigabitEthernet1:
+    neighbor: RR2
+    neighbor_interface: GigabitEthernet1
+  GigabitEthernet2:
+    neighbor: PE11
+    neighbor_interface: GigabitEthernet2
+  GigabitEthernet3:
+    neighbor: P6
+    neighbor_interface: GigabitEthernet3
+  GigabitEthernet4:
+    neighbor: P7
+    neighbor_interface: GigabitEthernet4
+  GigabitEthernet5:
+    neighbor: PE12
+    neighbor_interface: GigabitEthernet5
+
+RR2:
+  GigabitEthernet1:
+    neighbor: RR1
+    neighbor_interface: GigabitEthernet1
+  GigabitEthernet2:
+    neighbor: PE12
+    neighbor_interface: GigabitEthernet2
+  GigabitEthernet3:
+    neighbor: P7
+    neighbor_interface: GigabitEthernet3
+  GigabitEthernet4:
+    neighbor: P3
+    neighbor_interface: GigabitEthernet4
+  GigabitEthernet5:
+    neighbor: PE13
+    neighbor_interface: GigabitEthernet5
+
+P3:
+  GigabitEthernet1:
+    neighbor: PE13
+    neighbor_interface: GigabitEthernet1
+  GigabitEthernet2:
+    neighbor: P7
+    neighbor_interface: GigabitEthernet2
+  GigabitEthernet3:
+    neighbor: P4
+    neighbor_interface: GigabitEthernet3
+  GigabitEthernet4:
+    neighbor: RR2
+    neighbor_interface: GigabitEthernet4
+  GigabitEthernet5:
+    neighbor: PE14
+    neighbor_interface: GigabitEthernet5
+
+P4:
+  GigabitEthernet1:
+    neighbor: P5
+    neighbor_interface: GigabitEthernet1
+  GigabitEthernet2:
+    neighbor: PE14
+    neighbor_interface: GigabitEthernet2
+  GigabitEthernet3:
+    neighbor: P3
+    neighbor_interface: GigabitEthernet3
+  GigabitEthernet4:
+    neighbor: PE15
+    neighbor_interface: GigabitEthernet4
+  GigabitEthernet5:
+    neighbor: PE13
+    neighbor_interface: GigabitEthernet5
+
+P5:
+  GigabitEthernet1:
+    neighbor: P4
+    neighbor_interface: GigabitEthernet1
+  GigabitEthernet2:
+    neighbor: P6
+    neighbor_interface: GigabitEthernet2
+  GigabitEthernet3:
+    neighbor: PE15
+    neighbor_interface: GigabitEthernet3
+  GigabitEthernet4:
+    neighbor: PE16
+    neighbor_interface: GigabitEthernet4
+  GigabitEthernet5:
+    neighbor: P7
+    neighbor_interface: GigabitEthernet5
+
+P6:
+  GigabitEthernet1:
+    neighbor: P7
+    neighbor_interface: GigabitEthernet1
+  GigabitEthernet2:
+    neighbor: P5
+    neighbor_interface: GigabitEthernet2
+  GigabitEthernet3:
+    neighbor: RR1
+    neighbor_interface: GigabitEthernet3
+  GigabitEthernet4:
+    neighbor: PE11
+    neighbor_interface: GigabitEthernet4
+  GigabitEthernet5:
+    neighbor: PE16
+    neighbor_interface: GigabitEthernet5
+
+P7:
+  GigabitEthernet1:
+    neighbor: P6
+    neighbor_interface: GigabitEthernet1
+  GigabitEthernet2:
+    neighbor: P3
+    neighbor_interface: GigabitEthernet2
+  GigabitEthernet3:
+    neighbor: RR2
+    neighbor_interface: GigabitEthernet3
+  GigabitEthernet4:
+    neighbor: RR1
+    neighbor_interface: GigabitEthernet4
+  GigabitEthernet5:
+    neighbor: P5
+    neighbor_interface: GigabitEthernet5
+  GigabitEthernet6:
+    neighbor: P4
+    neighbor_interface: GigabitEthernet6
+
+PE11:
+  GigabitEthernet2:
+    neighbor: RR1
+    neighbor_interface: GigabitEthernet2
+  GigabitEthernet4:
+    neighbor: P6
+    neighbor_interface: GigabitEthernet4
+
+PE12:
+  GigabitEthernet2:
+    neighbor: RR2
+    neighbor_interface: GigabitEthernet2
+  GigabitEthernet5:
+    neighbor: RR1
+    neighbor_interface: GigabitEthernet5
+
+PE13:
+  GigabitEthernet1:
+    neighbor: P3
+    neighbor_interface: GigabitEthernet1
+  GigabitEthernet5:
+    neighbor: RR2
+    neighbor_interface: GigabitEthernet5
+
+PE14:
+  GigabitEthernet2:
+    neighbor: P4
+    neighbor_interface: GigabitEthernet2
+  GigabitEthernet5:
+    neighbor: P3
+    neighbor_interface: GigabitEthernet5
+
+PE15:
+  GigabitEthernet3:
+    neighbor: P5
+    neighbor_interface: GigabitEthernet3
+  GigabitEthernet4:
+    neighbor: P4
+    neighbor_interface: GigabitEthernet4
+
+PE16:
+  GigabitEthernet4:
+    neighbor: P5
+    neighbor_interface: GigabitEthernet4
+  GigabitEthernet5:
+    neighbor: P6
+    neighbor_interface: GigabitEthernet5
+

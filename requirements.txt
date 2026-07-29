@@ -1,0 +1,10 @@
+netmiko
+nornir
+nornir_scrapli
+nornir_jinja2
+nornir_utils
+jinja2
+pyyaml
+tabulate
+pyats
+genie
