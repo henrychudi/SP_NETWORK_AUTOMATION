@@ -34,6 +34,38 @@ def main():
     print("-" * 40)
     print(inventory.links.keys())
 
+    # Positive test: existing device
+    print("\nRR1")
+    print("----------------------------------------")
+    print(inventory.get_device("RR1"))
+
+    # New test: all devices
+    print("\nAll Devices")
+    print("----------------------------------------")
+    print(inventory.get_devices().keys())
+    
+    print("\nRR Devices")
+    print("----------------------------------------")
+    print(inventory.get_devices_by_role("RR").keys())
+
+    print("\nP Devices")
+    print("----------------------------------------")
+    print(inventory.get_devices_by_role("P").keys())
+
+    print("\nPE Devices")
+    print("----------------------------------------")
+    print(inventory.get_devices_by_role("PE").keys())
+
+
+    # Negative test: missing device
+    print("\nMissing Device")
+    print("----------------------------------------")
+    try:
+        inventory.get_device("RR100")
+    except Exception as exc:
+        print(exc)
+
 
 if __name__ == "__main__":
     main()
+

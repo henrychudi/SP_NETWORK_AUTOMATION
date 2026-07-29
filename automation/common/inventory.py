@@ -96,6 +96,42 @@ class Inventory:
         self.load_credentials()
         self.load_links()
 
+    def get_device(self, hostname: str) -> Dict[str, Any]:
+        """
+        Return a device by hostname.
+
+        Raises:
+            InventoryError
+                if the device does not exist.
+        """
+        try:
+            return self.devices[hostname]
+        except KeyError as exc:
+            raise InventoryError(
+                f"Device '{hostname}' not found."
+            ) from exc
+
+    def get_devices(self) -> Dict[str, Any]:
+        """
+        Return all devices in the inventory.
+        """
+        return self.devices
+
+    def get_devices_by_role(self, role: str) -> Dict[str, Any]:
+        """
+        Return all devices matching the given role.
+
+        Example:
+            get_devices_by_role("RR")
+            get_devices_by_role("P")
+            get_devices_by_role("PE")
+        """
+        return {
+            hostname: device
+            for hostname, device in self.devices.items()
+            if device.get("role") == role
+        }
+
     @property
     def device_count(self) -> int:
         """
@@ -111,4 +147,3 @@ class Inventory:
             f"credentials={len(self.credentials)}, "
             f"links={len(self.links)})"
         )
-
