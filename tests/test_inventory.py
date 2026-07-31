@@ -3,110 +3,67 @@ from automation.common.exceptions import InventoryError
 
 
 def main():
-    inventory = Inventory()
+    inventory = Inventory().load()
 
-    inventory.load()
-
+    # Inventory Summary
+    print("\nInventory Summary")
+    print("----------------------------------------")
     print(inventory)
+    print(f"Device Count : {inventory.device_count}")
 
-    print(f"Device count : {inventory.device_count}")
-
-    print()
-
-    print("Devices")
-    print("-" * 40)
-    print(inventory.devices.keys())
-
-    print()
-
-    print("Variables")
-    print("-" * 40)
-    print(inventory.variables.keys())
-
-    print()
-
-    print("Credentials")
-    print("-" * 40)
-    print(inventory.credentials.keys())
-
-    print()
-
-    print("Links")
-    print("-" * 40)
-    print(inventory.links.keys())
-
-    # Positive test: existing device
-    print("\nRR1")
+    # General Inventory
+    print("\nGeneral Inventory")
     print("----------------------------------------")
-    print(inventory.get_device("RR1"))
+    print("Devices:", inventory.get_devices().keys())
+    print("Variables:", inventory.get_variables().keys())
+    print("Credentials:", inventory.get_credentials().keys())
+    print("Links:", inventory.get_links().keys())
 
-    # New test: all devices
-    print("\nAll Devices")
+    # Device Queries
+    print("\nDevice Queries")
     print("----------------------------------------")
-    print(inventory.get_devices().keys())
-    
-    print("\nRR Devices")
-    print("----------------------------------------")
-    print(inventory.get_devices_by_role("RR").keys())
+    print("RR1:", inventory.get_device("RR1"))
+    print("All Devices:", inventory.get_devices().keys())
+    print("RR Devices:", inventory.get_devices_by_role("RR").keys())
+    print("P Devices:", inventory.get_devices_by_role("P").keys())
+    print("PE Devices:", inventory.get_devices_by_role("PE").keys())
 
-    print("\nP Devices")
+    # Device Information
+    print("\nDevice Information")
     print("----------------------------------------")
-    print(inventory.get_devices_by_role("P").keys())
+    print("Platform:", inventory.get_platform("RR1"))
+    print("Role:", inventory.get_role("RR1"))
+    print("Loopback:", inventory.get_loopback("RR1"))
+    print("Management IP:", inventory.get_management_ip("RR1"))
+    print("Node ID:", inventory.get_node_id("RR1"))
 
-    print("\nPE Devices")
+    # Topology
+    print("\nTopology")
     print("----------------------------------------")
-    print(inventory.get_devices_by_role("PE").keys())
-    
-    print("\nRR1 Neighbors")
-    print("----------------------------------------")
-    print(inventory.get_neighbors("RR1"))
-    
-    print("\nCredentials")
-    print("----------------------------------------")
-    print(inventory.get_credentials())
+    print("RR1 Neighbors:", inventory.get_neighbors("RR1"))
 
-    print("\nVariables")
+    # Existence Checks
+    print("\nExistence Checks")
     print("----------------------------------------")
-    print(inventory.get_variables())
+    print("Hostnames:", inventory.hostnames)
+    print("Device Exists RR1:", inventory.device_exists("RR1"))
+    print("Device Exists RR100:", inventory.device_exists("RR100"))
+    print("Link Exists RR1:", inventory.link_exists("RR1"))
+    print("Link Exists RR100:", inventory.link_exists("RR100"))
 
-    print("\nPlatform for RR1")
+    # Negative Tests
+    print("\nNegative Tests")
     print("----------------------------------------")
-    print(inventory.get_platform("RR1"))
-
-    print("\nLoopback for RR1")
-    print("----------------------------------------")
-    print(inventory.get_loopback("RR1"))
-
-    print("\nRole for RR1")
-    print("----------------------------------------")
-    print(inventory.get_role("RR1"))
-
-    print("\nNode ID for RR1")
-    print("----------------------------------------")
-    print(inventory.get_node_id("RR1"))
-
-    print("\nManagement IP for RR1")
-    print("----------------------------------------")
-    print(inventory.get_management_ip("RR1"))
-
-
-    print("\nMissing Neighbor Information")
-    print("----------------------------------------")
-
     try:
         inventory.get_neighbors("RR100")
     except InventoryError as exc:
-        print(exc)
+        print("Missing Neighbor:", exc)
 
-    # Negative test: missing device
-    print("\nMissing Device")
-    print("----------------------------------------")
     try:
         inventory.get_device("RR100")
-    except Exception as exc:
-        print(exc)
+    except InventoryError as exc:
+        print("Missing Device:", exc)
 
 
 if __name__ == "__main__":
     main()
-

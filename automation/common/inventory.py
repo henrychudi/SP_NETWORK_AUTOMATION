@@ -12,7 +12,7 @@ import yaml
 from automation.common.exceptions import InventoryError
 
 __all__ = ["Inventory"]
-__version__ = "1.1.0"
+__version__ = "1.1.1"
 
 
 class Inventory:
@@ -127,6 +127,10 @@ class Inventory:
     def get_variables(self) -> Dict[str, Any]:
         """Return global variables."""
         return self.variables
+
+    def get_links(self) -> Dict[str, Any]:
+        """Return all topology links."""
+        return self.links
 
     def get_platform(self, hostname: str) -> str:
         """
