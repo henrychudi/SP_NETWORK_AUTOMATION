@@ -60,6 +60,35 @@ def main():
     print("\nRR1 Neighbors")
     print("----------------------------------------")
     print(inventory.get_neighbors("RR1"))
+    
+    print("\nCredentials")
+    print("----------------------------------------")
+    print(inventory.get_credentials())
+
+    print("\nVariables")
+    print("----------------------------------------")
+    print(inventory.get_variables())
+
+    print("\nPlatform for RR1")
+    print("----------------------------------------")
+    print(inventory.get_platform("RR1"))
+
+    print("\nLoopback for RR1")
+    print("----------------------------------------")
+    print(inventory.get_loopback("RR1"))
+
+    print("\nRole for RR1")
+    print("----------------------------------------")
+    print(inventory.get_role("RR1"))
+
+    print("\nNode ID for RR1")
+    print("----------------------------------------")
+    print(inventory.get_node_id("RR1"))
+
+    print("\nManagement IP for RR1")
+    print("----------------------------------------")
+    print(inventory.get_management_ip("RR1"))
+
 
     print("\nMissing Neighbor Information")
     print("----------------------------------------")
