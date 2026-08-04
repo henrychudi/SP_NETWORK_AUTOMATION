@@ -66,6 +66,66 @@ class Connection:
 
         self._connection = None
 
+    @classmethod
+    def from_inventory(cls, inventory, hostname: str) -> "Connection":
+        """
+        Build a Connection object from the automation inventory.
+
+        Args:
+            inventory:
+                Loaded Inventory instance.
+
+            hostname:
+                Device hostname.
+
+        Returns:
+            Connection:
+                Connection object populated from inventory data.
+
+        Raises:
+            InventoryError:
+                If the device or default credentials are missing.
+        """
+        inventory.get_device(hostname)
+
+        management_ip = inventory.get_management_ip(hostname)
+
+        if not management_ip:
+            raise InventoryError(
+                f"Management IP not defined for '{hostname}'."
+            )
+
+        credentials = inventory.get_credentials().get("default", {})
+
+        username = credentials.get("username")
+        password = credentials.get("password")
+
+        if not username or not password:
+            raise InventoryError(
+                "Default credentials are not defined in inventory."
+            )
+
+        platform = inventory.get_platform(hostname)
+
+        device_type_map = {
+            "ios": "cisco_ios",
+        }
+
+        try:
+            device_type = device_type_map[platform]
+        except KeyError as exc:
+            raise InventoryError(
+                f"Unsupported platform '{platform}' for '{hostname}'."
+            ) from exc
+
+        return cls(
+            hostname=hostname,
+            device_type=device_type,
+            host=management_ip,
+            username=username,
+            password=password,
+        )
+
     @property
     def connected(self) -> bool:
         """

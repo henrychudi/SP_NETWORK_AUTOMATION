@@ -2,9 +2,26 @@ from unittest.mock import MagicMock, patch
 
 from automation.common.connection import Connection
 from automation.common.exceptions import InventoryError
+from automation.common.inventory import Inventory
 
 
 def main():
+    inventory = Inventory().load()
+
+    print("\nInventory Connection Test")
+    print("----------------------------------------")
+
+    inventory_connection = Connection.from_inventory(
+        inventory,
+        "RR1",
+    )
+
+    print("Hostname:", inventory_connection.hostname)
+    print("Host:", inventory_connection.host)
+    print("Device Type:", inventory_connection.device_type)
+    print("Username:", inventory_connection.username)
+    print("Connected:", inventory_connection.connected)
+
     connection = Connection(
         hostname="RR1",
         device_type="cisco_ios",
