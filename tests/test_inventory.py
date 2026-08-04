@@ -50,6 +50,56 @@ def main():
     print("Device Exists RR100:", inventory.device_exists("RR100"))
     print("Link Exists RR1:", inventory.link_exists("RR1"))
     print("Link Exists RR100:", inventory.link_exists("RR100"))
+    
+        # Management Network
+    print("\nManagement Network")
+    print("----------------------------------------")
+    #print("Management:", inventory.get_management())
+    print(
+    "Management Network:",
+    inventory.get_management_network().keys(),
+)
+    print("Server:", inventory.get_management_server())
+    print("Switches:", inventory.get_management_switches().keys())
+
+    print("\nManagement Connections")
+    print("----------------------------------------")
+    print(
+        "unmanaged-switch-0:",
+        inventory.get_management_connections("unmanaged-switch-0"),
+    )
+    print(
+        "unmanaged-switch-1:",
+        inventory.get_management_connections("unmanaged-switch-1"),
+    )
+
+    print("\nDevice Management Connections")
+    print("----------------------------------------")
+    print(
+        "RR1:",
+        inventory.get_management_connection("RR1"),
+    )
+    print(
+        "P3:",
+        inventory.get_management_connection("P3"),
+    )
+    print(
+        "PE16:",
+        inventory.get_management_connection("PE16"),
+    )
+
+    # Management Negative Tests
+    print("\nManagement Negative Tests")
+    print("----------------------------------------")
+    try:
+        inventory.get_management_connections("unmanaged-switch-99")
+    except InventoryError as exc:
+        print("Missing Management Switch:", exc)
+
+    try:
+        inventory.get_management_connection("RR100")
+    except InventoryError as exc:
+        print("Missing Management Connection:", exc)
 
     # Negative Tests
     print("\nNegative Tests")
