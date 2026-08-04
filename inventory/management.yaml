@@ -1,0 +1,49 @@
+management_network:
+  server:
+    name: cisco-project-server
+
+  switches:
+    unmanaged-switch-0:
+      connections:
+        RR1:
+          device_interface: GigabitEthernet10
+          switch_port: port5
+        P5:
+          device_interface: GigabitEthernet10
+          switch_port: port6
+        P6:
+          device_interface: GigabitEthernet10
+          switch_port: port3
+        PE11:
+          device_interface: GigabitEthernet10
+          switch_port: port1
+        PE12:
+          device_interface: GigabitEthernet10
+          switch_port: port4
+        PE15:
+          device_interface: GigabitEthernet10
+          switch_port: port7
+        PE16:
+          device_interface: GigabitEthernet10
+          switch_port: port2
+
+    unmanaged-switch-1:
+      connections:
+        RR2:
+          device_interface: GigabitEthernet10
+          switch_port: port1
+        P3:
+          device_interface: GigabitEthernet10
+          switch_port: port4
+        P4:
+          device_interface: GigabitEthernet10
+          switch_port: port5
+        P7:
+          device_interface: GigabitEthernet10
+          switch_port: port3
+        PE13:
+          device_interface: GigabitEthernet10
+          switch_port: port2
+        PE14:
+          device_interface: GigabitEthernet10
+          switch_port: port6
