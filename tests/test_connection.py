@@ -22,6 +22,43 @@ def main():
     print("Username:", inventory_connection.username)
     print("Connected:", inventory_connection.connected)
 
+    print("\nInventory Connection Negative Tests")
+    print("----------------------------------------")
+
+    try:
+        Connection.from_inventory(
+            inventory,
+            "RR100",
+        )
+    except InventoryError as exc:
+        print("Missing Device:", exc)
+
+    original_management_ip = inventory.devices["RR1"]["mgmt_ip"]
+    inventory.devices["RR1"]["mgmt_ip"] = ""
+
+    try:
+        Connection.from_inventory(
+            inventory,
+            "RR1",
+        )
+    except InventoryError as exc:
+        print("Missing Management IP:", exc)
+    finally:
+        inventory.devices["RR1"]["mgmt_ip"] = original_management_ip
+
+    original_platform = inventory.variables["platform"]
+    inventory.variables["platform"] = "unsupported"
+
+    try:
+        Connection.from_inventory(
+            inventory,
+            "RR1",
+        )
+    except InventoryError as exc:
+        print("Unsupported Platform:", exc)
+    finally:
+        inventory.variables["platform"] = original_platform
+
     connection = Connection(
         hostname="RR1",
         device_type="cisco_ios",
