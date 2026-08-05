@@ -120,7 +120,6 @@ class Bootstrap:
         self,
         hostname: str,
         dry_run: bool = True,
-        device_type: str = "cisco_ios",
     ) -> str:
         """
         Generate and optionally deploy bootstrap configuration.
@@ -131,9 +130,6 @@ class Bootstrap:
 
             dry_run:
                 If True, configuration is generated but not deployed.
-
-            device_type:
-                Netmiko device type.
 
         Returns:
             Generated configuration.
@@ -154,19 +150,11 @@ class Bootstrap:
                 "Dry run enabled. Configuration not deployed: %s",
                 hostname,
             )
-
             return config
 
-        device = self.inventory.get_device(hostname)
-        credentials = self.inventory.get_credentials()
-        default_credentials = credentials.get("default", {})
-
-        connection = Connection(
-            hostname=hostname,
-            device_type=device_type,
-            host=device.get("mgmt_ip", ""),
-            username=default_credentials.get("username", ""),
-            password=default_credentials.get("password", ""),
+        connection = Connection.from_inventory(
+            self.inventory,
+            hostname,
         )
 
         try:
